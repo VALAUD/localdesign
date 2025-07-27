@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Dashboard Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="bg-indigo-800 text-white w-64 flex-shrink-0">
+      <div class="p-4 border-b border-indigo-700">
+        <h1 class="text-xl font-bold">FashionConnect</h1>
+        <p class="text-indigo-300 text-sm">Client Dashboard</p>
+      </div>
+      <nav class="p-4">
+        <ul class="space-y-2">
+          <li>
+            <a href="dashboard.html" class="flex items-center space-x-2 bg-indigo-700 px-3 py-2 rounded-md">
+              <i class="fas fa-tachometer-alt w-5"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="profile.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md">
+              <i class="fas fa-user w-5"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="orders/index.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md">
+              <i class="fas fa-shopping-bag w-5"></i>
+              <span>My Orders</span>
+              <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full ml-auto">2 new</span>
+            </a>
+          </li>
+          <li>
+            <a href="requests/index.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md">
+              <i class="fas fa-bullhorn w-5"></i>
+              <span>My Requests</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-gray-800">Dashboard Overview</h2>
+        <div class="flex items-center space-x-4">
+          <button class="text-gray-600 hover:text-indigo-600">
+            <i class="fas fa-bell"></i>
+          </button>
+          <div class="flex items-center">
+            <img src="https://placekitten.com/40/40" alt="Profile" class="w-8 h-8 rounded-full mr-2">
+            <span class="text-sm font-medium">Sarah Johnson</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="p-6">
+        <!-- Welcome Banner -->
+        <div class="bg-indigo-600 text-white p-6 rounded-lg shadow-md mb-6">
+          <h2 class="text-2xl font-bold mb-2">Welcome back, Sarah!</h2>
+          <p>You have 2 active orders and 3 new seller responses to your requests.</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500 text-sm">Active Orders</p>
+                <p class="text-2xl font-bold">2</p>
+              </div>
+              <div class="bg-blue-100 p-3 rounded-full">
+                <i class="fas fa-shopping-bag text-blue-600"></i>
+              </div>
+            </div>
+            <a href="orders/index.html" class="text-blue-600 text-sm mt-2 inline-block hover:underline">View all orders</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500 text-sm">Pending Requests</p>
+                <p class="text-2xl font-bold">3</p>
+              </div>
+              <div class="bg-purple-100 p-3 rounded-full">
+                <i class="fas fa-bullhorn text-purple-600"></i>
+              </div>
+            </div>
+            <a href="requests/index.html" class="text-purple-600 text-sm mt-2 inline-block hover:underline">View requests</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-500 text-sm">Favorite Sellers</p>
+                <p class="text-2xl font-bold">5</p>
+              </div>
+              <div class="bg-pink-100 p-3 rounded-full">
+                <i class="fas fa-heart text-pink-600"></i>
+              </div>
+            </div>
+            <a href="browse.html" class="text-pink-600 text-sm mt-2 inline-block hover:underline">Browse sellers</a>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-medium">Recent Activity</h3>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <!-- Activity 1 -->
+            <div class="p-4 hover:bg-gray-50">
+              <div class="flex items-center">
+                <div class="bg-green-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-check text-green-600"></i>
+                </div>
+                <div>
+                  <p class="font-medium">Order #12345 completed</p>
+                  <p class="text-sm text-gray-500">Your wedding dress is ready for pickup from Jane's Tailoring</p>
+                  <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                </div>
+                <button class="ml-auto bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700">
+                  Review
+                </button>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="p-4 hover:bg-gray-50">
+              <div class="flex items-center">
+                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-envelope text-blue-600"></i>
+                </div>
+                <div>
+                  <p class="font-medium">New message from TailorMade</p>
+                  <p class="text-sm text-gray-500">"We have some questions about your suit alteration request"</p>
+                  <p class="text-xs text-gray-400 mt-1">5 hours ago</p>
+                </div>
+                <button class="ml-auto bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700">
+                  Reply
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // In a real app, you would fetch data here
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Client dashboard loaded');
+    });
+  </script>
+</body>
+</html>

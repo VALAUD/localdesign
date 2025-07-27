@@ -1,0 +1,65 @@
+<div class="order-card bg-white rounded-lg shadow-md overflow-hidden border-l-4 {% if status == 'pending' %}border-yellow-500{% elif status == 'in_progress' %}border-blue-500{% elif status == 'completed' %}border-green-500{% else %}border-gray-500{% endif %}">
+  <div class="p-4">
+    <div class="flex justify-between items-start">
+      <div>
+        <h3 class="font-medium text-lg">{{ order.title }}</h3>
+        <p class="text-gray-600 text-sm">Order #{{ order.id }}</p>
+      </div>
+      <span class="px-2 py-1 text-xs rounded-full 
+        {% if status == 'pending' %}bg-yellow-100 text-yellow-800
+        {% elif status == 'in_progress' %}bg-blue-100 text-blue-800
+        {% elif status == 'completed' %}bg-green-100 text-green-800
+        {% else %}bg-gray-100 text-gray-800{% endif %}">
+        {{ status|title }}
+      </span>
+    </div>
+
+    <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
+      <div>
+        <p class="text-gray-500">Client</p>
+        <p>{{ order.client_name }}</p>
+      </div>
+      <div>
+        <p class="text-gray-500">Due Date</p>
+        <p>{{ order.due_date }}</p>
+      </div>
+      <div>
+        <p class="text-gray-500">Price</p>
+        <p class="font-medium">${{ order.price }}</p>
+      </div>
+      <div>
+        <p class="text-gray-500">Service</p>
+        <p>{{ order.service_type }}</p>
+      </div>
+    </div>
+
+    <div class="mt-4 flex space-x-2">
+      <a href="/seller/orders/{{ order.id }}" class="flex-1 text-center bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+        View Details
+      </a>
+      {% if status == 'pending' %}
+      <button class="flex-1 text-center bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 text-sm accept-order" data-order-id="{{ order.id }}">
+        Accept
+      </button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Order actions (example for accept button)
+  document.querySelectorAll('.accept-order').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const orderId = e.target.dataset.orderId;
+      if (confirm('Accept this order?')) {
+        fetch(`/api/orders/${orderId}/accept`, { method: 'POST' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              e.target.closest('.order-card').remove();
+            }
+          });
+      }
+    });
+  });
+</script>

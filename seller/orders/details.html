@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Dashboard Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar (Same as before) -->
+    <div class="bg-indigo-800 text-white w-64 flex-shrink-0">
+      <!-- ... existing sidebar ... -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Top Bar with Back Button -->
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="index.html" class="mr-4 text-gray-600 hover:text-indigo-600">
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <h2 class="text-xl font-semibold text-gray-800">Order #12345</h2>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+            In Progress
+          </span>
+          <!-- ... existing user menu ... -->
+        </div>
+      </header>
+
+      <!-- Order Details Content -->
+      <main class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Left Column -->
+          <div class="md:col-span-2 space-y-6">
+            <!-- Order Summary -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4 flex items-center">
+                <i class="fas fa-clipboard-list text-indigo-600 mr-2"></i>
+                Order Summary
+              </h3>
+              <div class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-gray-500 text-sm">Order Title</p>
+                    <p class="font-medium">Custom Wedding Dress</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 text-sm">Service Type</p>
+                    <p class="font-medium">Custom Design</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Description</p>
+                  <p class="mt-1">A-line wedding dress with lace overlay and long train. Organic silk material preferred.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <p class="text-gray-500 text-sm">Agreed Price</p>
+                    <p class="font-medium text-lg">$1,200.00</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 text-sm">Due Date</p>
+                    <p class="font-medium">June 15, 2023</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 text-sm">Order Date</p>
+                    <p class="font-medium">April 10, 2023</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Client Measurements -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4 flex items-center">
+                <i class="fas fa-ruler-combined text-indigo-600 mr-2"></i>
+                Client Measurements
+              </h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Height</p>
+                  <p>170 cm</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Bust</p>
+                  <p>92 cm</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Waist</p>
+                  <p>74 cm</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Hips</p>
+                  <p>98 cm</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Inseam</p>
+                  <p>76 cm</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reference Images -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4 flex items-center">
+                <i class="fas fa-images text-indigo-600 mr-2"></i>
+                Reference Images
+              </h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <img src="https://placekitten.com/300/300" alt="Reference 1" class="w-full h-32 object-cover rounded-md cursor-pointer hover:opacity-75">
+                <img src="https://placekitten.com/301/301" alt="Reference 2" class="w-full h-32 object-cover rounded-md cursor-pointer hover:opacity-75">
+                <img src="https://placekitten.com/302/302" alt="Reference 3" class="w-full h-32 object-cover rounded-md cursor-pointer hover:opacity-75">
+              </div>
+            </div>
+
+            <!-- Order Messages -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4 flex items-center justify-between">
+                <span><i class="fas fa-comments text-indigo-600 mr-2"></i>Messages</span>
+                <button class="text-sm text-indigo-600 hover:text-indigo-800">View All</button>
+              </h3>
+              <div class="space-y-4">
+                <!-- Message 1 -->
+                <div class="flex">
+                  <img src="https://placekitten.com/40/40" alt="Client" class="w-8 h-8 rounded-full mr-3">
+                  <div>
+                    <p class="font-medium">Sarah Johnson</p>
+                    <p class="text-sm text-gray-500">April 12, 10:30 AM</p>
+                    <p class="mt-1">Can we add small pearl buttons along the back?</p>
+                  </div>
+                </div>
+                <!-- Message 2 -->
+                <div class="flex">
+                  <img src="https://placekitten.com/41/41" alt="You" class="w-8 h-8 rounded-full mr-3">
+                  <div>
+                    <p class="font-medium">You</p>
+                    <p class="text-sm text-gray-500">April 12, 11:45 AM</p>
+                    <p class="mt-1">Yes, that would look beautiful! It will add $50 to the total.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 flex">
+                <input type="text" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-r-md hover:bg-indigo-700">
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Actions) -->
+          <div class="space-y-6">
+            <!-- Order Actions -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Order Actions</h3>
+              <div class="space-y-3">
+                <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                  <i class="fas fa-edit mr-2"></i>Update Progress
+                </button>
+                <button class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700">
+                  <i class="fas fa-check mr-2"></i>Mark as Completed
+                </button>
+                <button class="w-full bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600">
+                  <i class="fas fa-clock mr-2"></i>Request Extension
+                </button>
+                <button class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700">
+                  <i class="fas fa-times mr-2"></i>Cancel Order
+                </button>
+              </div>
+            </div>
+
+            <!-- Client Information -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Client Information</h3>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <img src="https://placekitten.com/60/60" alt="Client" class="w-12 h-12 rounded-full mr-3">
+                  <div>
+                    <p class="font-medium">Sarah Johnson</p>
+                    <p class="text-sm text-gray-500">Member since March 2022</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Email</p>
+                  <p>sarah.johnson@example.com</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Phone</p>
+                  <p>+1 (555) 123-4567</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Delivery Address</p>
+                  <p>123 Main St, Apt 4B<br>New York, NY 10001</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Order Timeline</h3>
+              <div class="space-y-4">
+                <div class="flex">
+                  <div class="mr-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mt-1"></div>
+                    <div class="w-px h-full bg-gray-300 mx-auto"></div>
+                  </div>
+                  <div class="pb-4">
+                    <p class="font-medium">Order Completed</p>
+                    <p class="text-sm text-gray-500">June 10, 2023 (5 days early)</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <div class="mr-4">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mt-1"></div>
+                    <div class="w-px h-full bg-gray-300 mx-auto"></div>
+                  </div>
+                  <div class="pb-4">
+                    <p class="font-medium">First Fitting</p>
+                    <p class="text-sm text-gray-500">May 25, 2023</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <div class="mr-4">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mt-1"></div>
+                    <div class="w-px h-full bg-gray-300 mx-auto"></div>
+                  </div>
+                  <div class="pb-4">
+                    <p class="font-medium">Fabric Ordered</p>
+                    <p class="text-sm text-gray-500">April 20, 2023</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <div class="mr-4">
+                    <div class="w-3 h-3 bg-indigo-500 rounded-full mt-1"></div>
+                  </div>
+                  <div>
+                    <p class="font-medium">Order Accepted</p>
+                    <p class="text-sm text-gray-500">April 12, 2023</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Status update example
+    document.querySelectorAll('[data-action="update-status"]').forEach(button => {
+      button.addEventListener('click', () => {
+        const newStatus = button.dataset.status;
+        if (confirm(`Change order status to ${newStatus}?`)) {
+          fetch(`/api/orders/12345/status`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: newStatus })
+          }).then(response => {
+            if (response.ok) {
+              window.location.reload();
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

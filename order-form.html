@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <div id="header"></div>
+  <script>
+    fetch('partials/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
+
+  <!-- Order Form -->
+  <section class="container mx-auto px-4 py-12 max-w-2xl">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold text-indigo-700 mb-2">Place Your Order</h1>
+      <p class="text-gray-600 mb-6">Custom order for <span id="sellerName" class="font-semibold">Jane Doe</span></p>
+
+      <form id="orderForm" class="space-y-6">
+        <!-- Hidden Seller ID -->
+        <input type="hidden" id="sellerId" name="seller_id">
+
+        <!-- Service Selection -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+          <select id="serviceType" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+            <option value="">Select a service</option>
+            <option value="tailoring">Tailoring</option>
+            <option value="custom_design">Custom Design</option>
+            <option value="repair">Repair/Alteration</option>
+          </select>
+        </div>
+
+        <!-- Project Details -->
+        <div>
+          <label for="projectTitle" class="block text-sm font-medium text-gray-700 mb-1">Project Title</label>
+          <input type="text" id="projectTitle" placeholder="e.g., 'Custom Wedding Dress'" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+        </div>
+
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <textarea id="description" rows="4" placeholder="Describe what you need in detail..." class="w-full px-3 py-2 border border-gray-300 rounded-md" required></textarea>
+        </div>
+
+        <!-- Measurements -->
+        <div class="border-t border-gray-200 pt-4">
+          <h3 class="text-lg font-medium text-gray-900 mb-3">Measurements</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="chest" class="block text-sm font-medium text-gray-700 mb-1">Chest (cm)</label>
+              <input type="number" id="chest" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div>
+              <label for="waist" class="block text-sm font-medium text-gray-700 mb-1">Waist (cm)</label>
+              <input type="number" id="waist" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <!-- Add more measurement fields -->
+          </div>
+          <p class="mt-2 text-sm text-gray-500">Don't know your measurements? <a href="#" class="text-indigo-600 hover:underline">How to measure</a></p>
+        </div>
+
+        <!-- Budget & Timeline -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget (USD)</label>
+            <input type="number" id="budget" min="50" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="deadline" class="block text-sm font-medium text-gray-700 mb-1">Deadline</label>
+            <input type="date" id="deadline" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          </div>
+        </div>
+
+        <!-- Reference Images -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Reference Images</label>
+          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+            <div class="space-y-1 text-center">
+              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div class="flex text-sm text-gray-600">
+                <label class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none">
+                  <span>Upload files</span>
+                  <input type="file" class="sr-only" multiple>
+                </label>
+                <p class="pl-1">or drag and drop</p>
+              </div>
+              <p class="text-xs text-gray-500">PNG, JPG up to 5MB</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700">
+          Submit Order
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+
+  <!-- Order Form Logic -->
+  <script>
+    // Get seller ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sellerId = urlParams.get('seller_id');
+    document.getElementById('sellerId').value = sellerId;
+
+    // Fetch seller name (mock - replace with real API call)
+    if (sellerId === '123') {
+      document.getElementById('sellerName').textContent = 'Jane Doe';
+    }
+
+    // Form submission
+    document.getElementById('orderForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const orderData = {
+        sellerId: sellerId,
+        serviceType: document.getElementById('serviceType').value,
+        projectTitle: document.getElementById('projectTitle').value,
+        description: document.getElementById('description').value,
+        budget: document.getElementById('budget').value,
+        deadline: document.getElementById('deadline').value,
+        measurements: {
+          chest: document.getElementById('chest').value,
+          waist: document.getElementById('waist').value
+        }
+      };
+      alert(`Order submitted!\n${JSON.stringify(orderData, null, 2)}`);
+      // In a real app: fetch('/api/orders', { method: 'POST', body: JSON.stringify(orderData) })
+    });
+  </script>
+</body>
+</html>

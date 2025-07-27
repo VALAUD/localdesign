@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Sellers | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Include header -->
+  <div id="header"></div>
+  <script>
+    fetch('partials/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
+
+  <!-- Search Bar -->
+  <section class="container mx-auto px-4 py-12">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <input type="text" placeholder="Search designers..." class="w-full p-3 border rounded-lg mb-4">
+      <div class="flex space-x-4">
+        <button class="bg-indigo-100 px-4 py-2 rounded-lg">Local Sellers</button>
+        <button class="bg-indigo-100 px-4 py-2 rounded-lg">Top Rated</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seller Grid (Example) -->
+  <section class="container mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Seller Card 1 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://placekitten.com/400/300" alt="Seller" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-bold text-xl">Jane Doe</h3>
+          <p class="text-gray-600">Custom Tailoring • New York</p>
+          <p class="text-yellow-500">★★★★☆ (24 reviews)</p>
+          <a href="/seller-profile.html" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-md">View Profile</a>
+        </div>
+      </div>
+      <!-- Repeat for more sellers -->
+    </div>
+  </section>
+
+  <!-- Include footer -->
+  <div id="footer"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Dashboard Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar (Same as before) -->
+    <div class="bg-indigo-800 text-white w-64 flex-shrink-0">
+      <!-- ... existing sidebar ... -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-gray-800">Order Management</h2>
+        <!-- ... existing user menu ... -->
+      </header>
+
+      <!-- Orders Content -->
+      <main class="p-6">
+        <!-- Status Tabs -->
+        <div class="flex border-b border-gray-200 mb-6">
+          <button data-tab="all" class="tab-button active px-4 py-2 font-medium text-sm border-b-2 border-indigo-500 text-indigo-600">All Orders</button>
+          <button data-tab="pending" class="tab-button px-4 py-2 font-medium text-sm text-gray-500 hover:text-gray-700">Pending</button>
+          <button data-tab="in_progress" class="tab-button px-4 py-2 font-medium text-sm text-gray-500 hover:text-gray-700">In Progress</button>
+          <button data-tab="completed" class="tab-button px-4 py-2 font-medium text-sm text-gray-500 hover:text-gray-700">Completed</button>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="bg-white p-4 rounded-lg shadow mb-6">
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="md:col-span-2">
+              <input type="text" placeholder="Search orders..." class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option>Sort by: Newest</option>
+                <option>Sort by: Oldest</option>
+                <option>Sort by: Highest Price</option>
+                <option>Sort by: Due Date</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Grid -->
+        <div class="grid grid-cols-1 gap-6" id="orders-container">
+          <!-- Order Card 1 -->
+          <div data-status="pending">
+            <!-- Using the order-card component -->
+            <div include="components/order-card.html" 
+              replace='{
+                "order.id": "12345",
+                "order.title": "Custom Wedding Dress",
+                "status": "pending",
+                "order.client_name": "Sarah Johnson",
+                "order.due_date": "2023-06-15",
+                "order.price": "1200",
+                "order.service_type": "Custom Design"
+              }'></div>
+          </div>
+
+          <!-- Order Card 2 -->
+          <div data-status="in_progress">
+            <div include="components/order-card.html" 
+              replace='{
+                "order.id": "12346",
+                "order.title": "Suit Alteration",
+                "status": "in_progress",
+                "order.client_name": "Michael Brown",
+                "order.due_date": "2023-05-20",
+                "order.price": "85",
+                "order.service_type": "Tailoring"
+              }'></div>
+          </div>
+
+          <!-- Order Card 3 -->
+          <div data-status="completed">
+            <div include="components/order-card.html" 
+              replace='{
+                "order.id": "12344",
+                "order.title": "Vintage Dress Restoration",
+                "status": "completed",
+                "order.client_name": "Emma Wilson",
+                "order.due_date": "2023-04-10",
+                "order.price": "350",
+                "order.service_type": "Restoration"
+              }'></div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-12">
+          <i class="fas fa-clipboard-list text-gray-300 text-5xl mb-4"></i>
+          <h3 class="text-lg font-medium text-gray-900">No orders found</h3>
+          <p class="text-gray-500 mt-1">You don't have any orders in this category yet.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active tab
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active', 'border-indigo-500', 'text-indigo-600');
+          btn.classList.add('text-gray-500');
+        });
+        button.classList.add('active', 'border-indigo-500', 'text-indigo-600');
+        button.classList.remove('text-gray-500');
+
+        // Filter orders
+        const status = button.dataset.tab;
+        const orders = document.querySelectorAll('#orders-container > div');
+        let visibleCount = 0;
+
+        orders.forEach(order => {
+          if (status === 'all' || order.dataset.status === status) {
+            order.style.display = 'block';
+            visibleCount++;
+          } else {
+            order.style.display = 'none';
+          }
+        });
+
+        // Show empty state if no orders
+        document.getElementById('empty-state').style.display = 
+          visibleCount > 0 ? 'none' : 'block';
+      });
+    });
+
+    // Include component (simplified version)
+    document.querySelectorAll('[include]').forEach(element => {
+      const file = element.getAttribute('include');
+      fetch(file)
+        .then(response => response.text())
+        .then(data => {
+          let html = data;
+          const replace = JSON.parse(element.getAttribute('replace') || '{}');
+          Object.keys(replace).forEach(key => {
+            html = html.replace(new RegExp(`{{\\s*${key}\\s*}}`, 'g'), replace[key]);
+          });
+          element.outerHTML = html;
+        });
+    });
+  </script>
+</body>
+</html>

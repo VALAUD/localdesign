@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Dashboard Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="bg-indigo-800 text-white w-64 flex-shrink-0">
+      <div class="p-4 border-b border-indigo-700">
+        <h1 class="text-xl font-bold">FashionConnect</h1>
+        <p class="text-indigo-300 text-sm">Seller Dashboard</p>
+      </div>
+      <nav class="p-4">
+        <ul class="space-y-2">
+          <li><a href="../dashboard.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md"><i class="fas fa-tachometer-alt w-5"></i><span>Dashboard</span></a></li>
+          <li><a href="index.html" class="flex items-center space-x-2 bg-indigo-700 px-3 py-2 rounded-md"><i class="fas fa-images w-5"></i><span>Portfolio</span></a></li>
+          <!-- Other nav items -->
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-gray-800">My Portfolio</h2>
+        <a href="add.html" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 flex items-center">
+          <i class="fas fa-plus mr-2"></i> Add New
+        </a>
+      </header>
+
+      <!-- Portfolio Content -->
+      <main class="p-6">
+        <!-- Filter/Search Bar -->
+        <div class="bg-white p-4 rounded-lg shadow mb-6">
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="md:col-span-3">
+              <input type="text" placeholder="Search portfolio items..." class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <div>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <option>All Categories</option>
+                <option>Bridal Wear</option>
+                <option>Custom Design</option>
+                <option>Tailoring</option>
+                <option>Vintage Restoration</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+          <!-- Portfolio Item 1 -->
+          <div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img src="https://placekitten.com/600/400" alt="Wedding Dress" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <h3 class="font-medium text-lg">Lace Wedding Dress</h3>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">$1,200</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Custom designed for client in 2023</p>
+              <div class="flex flex-wrap gap-1 mt-3">
+                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Bridal</span>
+                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Silk</span>
+              </div>
+              <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                <div class="text-sm text-gray-500">
+                  <i class="fas fa-share-alt mr-1"></i> 24 shares
+                </div>
+                <div class="flex space-x-2">
+                  <a href="add.html?id=1" class="text-indigo-600 hover:text-indigo-800">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <button class="text-red-600 hover:text-red-800 delete-item" data-id="1">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 2 -->
+          <div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img src="https://placekitten.com/601/401" alt="Tailored Suit" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <h3 class="font-medium text-lg">Tailored Wool Suit</h3>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">$850</span>
+              </div>
+              <p class="text-gray-600 text-sm mt-1">Made-to-measure for corporate client</p>
+              <div class="flex flex-wrap gap-1 mt-3">
+                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Tailoring</span>
+                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Wool</span>
+              </div>
+              <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                <div class="text-sm text-gray-500">
+                  <i class="fas fa-share-alt mr-1"></i> 12 shares
+                </div>
+                <div class="flex space-x-2">
+                  <a href="add.html?id=2" class="text-indigo-600 hover:text-indigo-800">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <button class="text-red-600 hover:text-red-800 delete-item" data-id="2">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State (hidden by default) -->
+          <div id="empty-portfolio" class="hidden col-span-full text-center py-12">
+            <i class="fas fa-images text-gray-300 text-5xl mb-4"></i>
+            <h3 class="text-lg font-medium text-gray-900">Your portfolio is empty</h3>
+            <p class="text-gray-500 mt-1">Showcase your work to attract more clients</p>
+            <a href="add.html" class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+              Add Your First Item
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg max-w-md w-full">
+      <h3 class="text-lg font-medium mb-4">Delete Portfolio Item?</h3>
+      <p class="text-gray-600 mb-6">Are you sure you want to delete this item? This action cannot be undone.</p>
+      <div class="flex justify-end space-x-3">
+        <button id="cancelDelete" class="px-4 py-2 border border-gray-300 rounded-md">Cancel</button>
+        <button id="confirmDelete" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Delete item functionality
+    let itemToDelete = null;
+    
+    document.querySelectorAll('.delete-item').forEach(button => {
+      button.addEventListener('click', (e) => {
+        itemToDelete = e.target.closest('.portfolio-item');
+        document.getElementById('deleteModal').classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('cancelDelete').addEventListener('click', () => {
+      document.getElementById('deleteModal').classList.add('hidden');
+      itemToDelete = null;
+    });
+
+    document.getElementById('confirmDelete').addEventListener('click', () => {
+      if (itemToDelete) {
+        // In a real app: fetch(`/api/portfolio/${itemId}`, { method: 'DELETE' })
+        itemToDelete.remove();
+        checkEmptyState();
+      }
+      document.getElementById('deleteModal').classList.add('hidden');
+      itemToDelete = null;
+    });
+
+    // Check if portfolio is empty
+    function checkEmptyState() {
+      const isEmpty = document.querySelectorAll('.portfolio-item').length === 0;
+      document.getElementById('empty-portfolio').style.display = isEmpty ? 'block' : 'none';
+    }
+
+    // Initial check
+    checkEmptyState();
+  </script>
+</body>
+</html>

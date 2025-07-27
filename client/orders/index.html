@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Dashboard Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar (Same as dashboard) -->
+    <div class="bg-indigo-800 text-white w-64 flex-shrink-0">
+      <!-- ... existing sidebar ... -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-gray-800">My Orders</h2>
+        <!-- ... existing user menu ... -->
+      </header>
+
+      <!-- Orders Content -->
+      <main class="p-6">
+        <!-- Status Tabs -->
+        <div class="flex border-b border-gray-200 mb-6">
+          <button data-tab="all" class="tab-button active px-4 py-2 font-medium text-sm border-b-2 border-indigo-500 text-indigo-600">All Orders</button>
+          <button data-tab="in_progress" class="tab-button px-4 py-2 font-medium text-sm text-gray-500 hover:text-gray-700">In Progress</button>
+          <button data-tab="completed" class="tab-button px-4 py-2 font-medium text-sm text-gray-500 hover:text-gray-700">Completed</button>
+          <button data-tab="cancelled" class="tab-button px-4 py-2 font-medium text-sm text-gray-500 hover:text-gray-700">Cancelled</button>
+        </div>
+
+        <!-- Orders Grid -->
+        <div class="grid grid-cols-1 gap-6" id="orders-container">
+          <!-- Order 1 -->
+          <div class="order-card bg-white rounded-lg shadow-md overflow-hidden border-l-4 border-blue-500">
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-medium text-lg">Custom Wedding Dress</h3>
+                  <p class="text-gray-600 text-sm">Order #12345 • Jane's Tailoring</p>
+                </div>
+                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
+                  In Progress
+                </span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p class="text-gray-500">Order Date</p>
+                  <p>April 10, 2023</p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Due Date</p>
+                  <p>June 15, 2023</p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Price</p>
+                  <p class="font-medium">$1,200.00</p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Last Update</p>
+                  <p>2 days ago</p>
+                </div>
+              </div>
+
+              <div class="mt-4 flex space-x-2">
+                <a href="details.html?id=12345" class="flex-1 text-center bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                  View Details
+                </a>
+                <button class="flex-1 text-center border border-gray-300 py-2 px-4 rounded-md text-sm hover:bg-gray-50">
+                  Message Seller
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order 2 -->
+          <div class="order-card bg-white rounded-lg shadow-md overflow-hidden border-l-4 border-green-500">
+            <div class="p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-medium text-lg">Suit Alteration</h3>
+                  <p class="text-gray-600 text-sm">Order #12346 • TailorMade</p>
+                </div>
+                <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
+                  Completed
+                </span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p class="text-gray-500">Order Date</p>
+                  <p>March 25, 2023</p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Completed</p>
+                  <p>April 5, 2023</p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Price</p>
+                  <p class="font-medium">$85.00</p>
+                </div>
+                <div>
+                  <p class="text-gray-500">Rating</p>
+                  <p class="text-yellow-500">★★★★☆</p>
+                </div>
+              </div>
+
+              <div class="mt-4 flex space-x-2">
+                <a href="details.html?id=12346" class="flex-1 text-center bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                  View Details
+                </a>
+                <button class="flex-1 text-center bg-yellow-500 text-white py-2 px-4 rounded-md text-sm hover:bg-yellow-600">
+                  Write Review
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-12">
+          <i class="fas fa-shopping-bag text-gray-300 text-5xl mb-4"></i>
+          <h3 class="text-lg font-medium text-gray-900">No orders yet</h3>
+          <p class="text-gray-500 mt-1">When you place orders with sellers, they'll appear here</p>
+          <a href="../browse.html" class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+            Browse Sellers
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active tab
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active', 'border-indigo-500', 'text-indigo-600');
+          btn.classList.add('text-gray-500');
+        });
+        button.classList.add('active', 'border-indigo-500', 'text-indigo-600');
+        button.classList.remove('text-gray-500');
+
+        // Filter orders (in a real app, this would be API calls)
+        const status = button.dataset.tab;
+        const orders = document.querySelectorAll('.order-card');
+        let visibleCount = 0;
+
+        orders.forEach(order => {
+          const orderStatus = order.querySelector('.bg-blue-100') ? 'in_progress' : 
+                            order.querySelector('.bg-green-100') ? 'completed' : 
+                            order.querySelector('.bg-red-100') ? 'cancelled' : '';
+
+          if (status === 'all' || orderStatus === status) {
+            order.style.display = 'block';
+            visibleCount++;
+          } else {
+            order.style.display = 'none';
+          }
+        });
+
+        // Show empty state if no orders
+        document.getElementById('empty-state').style.display = 
+          visibleCount > 0 ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

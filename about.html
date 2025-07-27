@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Reusable Header -->
+  <div id="header"></div>
+  <script>
+    fetch('partials/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
+
+  <!-- About Page Content -->
+  <section class="container mx-auto px-4 py-16 max-w-3xl">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-indigo-700 mb-4">About FashionConnect</h1>
+      <p class="text-xl text-gray-600">Connecting you with local artisans to create sustainable, custom fashion.</p>
+    </div>
+
+    <div class="space-y-8">
+      <!-- Mission Section -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-600">Our Mission</h2>
+        <p class="text-gray-700">
+          We’re fighting fast fashion by empowering local designers and tailors. 
+          Whether you need a custom wedding dress or a repaired vintage jacket, 
+          our platform makes it easy to support skilled creators in your community.
+        </p>
+      </div>
+
+      <!-- How It Started -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-600">How It Started</h2>
+        <p class="text-gray-700">
+          Founded in 2024, FashionConnect began as a passion project to bridge the gap 
+          between customers who value quality craftsmanship and talented sellers who 
+          deserve fair recognition. No more faceless factories—just real people creating 
+          clothes you’ll love.
+        </p>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-12">
+        <a href="browse.html" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+          Meet Our Sellers
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reusable Footer -->
+  <div id="footer"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+</html>

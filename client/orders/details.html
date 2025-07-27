@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .timeline-dot {
+      position: relative;
+    }
+    .timeline-dot::after {
+      content: '';
+      position: absolute;
+      top: 0.5rem;
+      left: -1.75rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background-color: #3B82F6; /* blue-500 */
+    }
+    .timeline-connector {
+      position: relative;
+    }
+    .timeline-connector::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -1.5rem;
+      width: 2px;
+      background-color: #E5E7EB; /* gray-200 */
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Dashboard Layout -->
+  <div class="flex h-screen">
+    <!-- Sidebar (Same as dashboard) -->
+    <div class="bg-indigo-800 text-white w-64 flex-shrink-0">
+      <div class="p-4 border-b border-indigo-700">
+        <h1 class="text-xl font-bold">FashionConnect</h1>
+        <p class="text-indigo-300 text-sm">Client Dashboard</p>
+      </div>
+      <nav class="p-4">
+        <ul class="space-y-2">
+          <li><a href="../dashboard.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md"><i class="fas fa-tachometer-alt w-5"></i><span>Dashboard</span></a></li>
+          <li><a href="../profile.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md"><i class="fas fa-user w-5"></i><span>Profile</span></a></li>
+          <li><a href="index.html" class="flex items-center space-x-2 bg-indigo-700 px-3 py-2 rounded-md"><i class="fas fa-shopping-bag w-5"></i><span>Orders</span></a></li>
+          <li><a href="../requests/index.html" class="flex items-center space-x-2 hover:bg-indigo-700 px-3 py-2 rounded-md"><i class="fas fa-bullhorn w-5"></i><span>Requests</span></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto">
+      <!-- Top Bar with Back Button -->
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="index.html" class="mr-4 text-gray-600 hover:text-indigo-600">
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <h2 class="text-xl font-semibold text-gray-800">Order #12345</h2>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+            In Progress
+          </span>
+          <div class="flex items-center">
+            <img src="https://placekitten.com/40/40" alt="Profile" class="w-8 h-8 rounded-full mr-2">
+          </div>
+        </div>
+      </header>
+
+      <!-- Order Details Content -->
+      <main class="p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Left Column -->
+          <div class="md:col-span-2 space-y-6">
+            <!-- Order Summary -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4 flex items-center justify-between">
+                <span>Order Summary</span>
+                <button class="text-sm text-indigo-600 hover:text-indigo-800 flex items-center">
+                  <i class="fas fa-file-invoice-dollar mr-1"></i> Invoice
+                </button>
+              </h3>
+              <div class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-gray-500 text-sm">Order Title</p>
+                    <p class="font-medium">Custom Wedding Dress</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 text-sm">Seller</p>
+                    <p class="font-medium">Jane's Tailoring</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Description</p>
+                  <p class="mt-1">A-line wedding dress with lace overlay and long train. Organic silk material preferred with pearl button details.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div>
+                    <p class="text-gray-500 text-sm">Order Date</p>
+                    <p class="font-medium">April 10, 2023</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 text-sm">Due Date</p>
+                    <p class="font-medium">June 15, 2023</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 text-sm">Agreed Price</p>
+                    <p class="font-medium text-lg">$1,200.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress Timeline -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Order Timeline</h3>
+              <div class="space-y-8 pl-8">
+                <!-- Update 1 (Current) -->
+                <div class="relative timeline-connector">
+                  <div class="timeline-dot">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <p class="font-medium">First Fitting Scheduled</p>
+                        <p class="text-sm text-gray-500">May 1, 2023</p>
+                      </div>
+                      <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 ml-4">
+                        Current Step
+                      </span>
+                    </div>
+                    <div class="mt-2 p-4 bg-blue-50 rounded-lg">
+                      <p class="text-sm">"Your first fitting is scheduled for May 25th at 2 PM. Please bring your shoes and undergarments for accurate adjustments."</p>
+                      <div class="mt-3 flex flex-wrap gap-2">
+                        <button class="bg-white text-blue-600 border border-blue-600 px-3 py-1 rounded-md text-sm hover:bg-blue-50">
+                          <i class="fas fa-calendar-alt mr-1"></i> Add to Calendar
+                        </button>
+                        <button class="bg-white text-blue-600 border border-blue-600 px-3 py-1 rounded-md text-sm hover:bg-blue-50">
+                          <i class="fas fa-envelope mr-1"></i> Request Change
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Update 2 -->
+                <div class="relative timeline-connector">
+                  <div class="timeline-dot">
+                    <div>
+                      <p class="font-medium">Fabric Ordered</p>
+                      <p class="text-sm text-gray-500">April 12, 2023</p>
+                    </div>
+                    <p class="mt-2 text-sm">"I've ordered the organic silk fabric you requested from our supplier in Italy. Expected delivery in 5-7 business days."</p>
+                    <div class="mt-3 flex space-x-2">
+                      <img src="https://placekitten.com/150/150" alt="Fabric swatch" class="w-16 h-16 object-cover rounded-md cursor-pointer hover:opacity-75">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Update 3 -->
+                <div class="relative">
+                  <div class="timeline-dot">
+                    <div>
+                      <p class="font-medium">Order Confirmed</p>
+                      <p class="text-sm text-gray-500">April 10, 2023</p>
+                    </div>
+                    <p class="mt-2 text-sm">"Thank you for your order! I'll begin working on your wedding dress once materials arrive."</p>
+                    <div class="mt-3">
+                      <button class="text-blue-600 text-sm hover:underline flex items-center">
+                        <i class="fas fa-file-contract mr-1"></i> View Order Agreement
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Messages</h3>
+              <div class="space-y-4 max-h-96 overflow-y-auto pr-2" id="messages-container">
+                <!-- Message 1 -->
+                <div class="flex">
+                  <img src="https://placekitten.com/40/40" alt="You" class="w-8 h-8 rounded-full mr-3 mt-1">
+                  <div>
+                    <p class="font-medium">You</p>
+                    <p class="text-sm text-gray-500">April 12, 10:30 AM</p>
+                    <div class="mt-1 p-3 bg-gray-50 rounded-lg">
+                      <p>Can we add small pearl buttons along the back?</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Message 2 -->
+                <div class="flex">
+                  <img src="https://placekitten.com/41/41" alt="Seller" class="w-8 h-8 rounded-full mr-3 mt-1">
+                  <div>
+                    <p class="font-medium">Jane's Tailoring</p>
+                    <p class="text-sm text-gray-500">April 12, 11:45 AM</p>
+                    <div class="mt-1 p-3 bg-blue-50 rounded-lg">
+                      <p>Yes, that would look beautiful! It will add $50 to the total. Here's a sample of the buttons:</p>
+                      <img src="https://placekitten.com/100/100" alt="Pearl buttons" class="w-16 h-16 object-cover rounded-md mt-2 cursor-pointer hover:opacity-75">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Message Input -->
+              <div class="mt-4 flex items-start">
+                <div class="flex-1 relative">
+                  <textarea id="messageInput" rows="2" placeholder="Type your message..." class="w-full px-3 py-2 border border-gray-300 rounded-md resize-none"></textarea>
+                  <div class="absolute right-2 bottom-2 flex space-x-1">
+                    <button class="text-gray-500 hover:text-indigo-600">
+                      <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="text-gray-500 hover:text-indigo-600">
+                      <i class="fas fa-image"></i>
+                    </button>
+                  </div>
+                </div>
+                <button id="sendMessage" class="ml-2 bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 h-10 w-10 flex items-center justify-center">
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="space-y-6">
+            <!-- Order Actions -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Order Actions</h3>
+              <div class="space-y-3">
+                <button class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 flex items-center justify-center">
+                  <i class="fas fa-envelope mr-2"></i> Message Seller
+                </button>
+                <button class="w-full bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 flex items-center justify-center">
+                  <i class="fas fa-clock mr-2"></i> Request Deadline Change
+                </button>
+                <button class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 flex items-center justify-center">
+                  <i class="fas fa-times mr-2"></i> Cancel Order
+                </button>
+              </div>
+            </div>
+
+            <!-- Seller Information -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Seller Information</h3>
+              <div class="flex items-center mb-4">
+                <img src="https://placekitten.com/60/60" alt="Seller" class="w-12 h-12 rounded-full mr-3">
+                <div>
+                  <p class="font-medium">Jane's Tailoring</p>
+                  <div class="flex items-center">
+                    <div class="text-yellow-500 mr-1">
+                      ★★★★☆
+                    </div>
+                    <span class="text-sm text-gray-500">(24 reviews)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div>
+                  <p class="text-gray-500 text-sm">Location</p>
+                  <p>123 Design Street, New York, NY</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Response Time</p>
+                  <p>Usually within 24 hours</p>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Completed Orders</p>
+                  <p>142</p>
+                </div>
+              </div>
+              <a href="../seller-profile.html?id=123" class="mt-4 inline-block w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-md">
+                View Full Profile
+              </a>
+            </div>
+
+            <!-- Payment & Delivery -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Payment & Delivery</h3>
+              <div class="space-y-4">
+                <div>
+                  <p class="text-gray-500 text-sm">Payment Method</p>
+                  <div class="flex items-center mt-1">
+                    <i class="fab fa-cc-stripe text-blue-500 text-xl mr-2"></i>
+                    <span>•••• •••• •••• 4242</span>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-sm">Delivery Method</p>
+                  <p class="mt-1">Studio Pickup</p>
+                  <p class="text-sm text-gray-500">123 Design Street, New York, NY</p>
+                </div>
+                <div class="pt-2 border-t border-gray-200">
+                  <p class="text-gray-500 text-sm">Order Total</p>
+                  <div class="mt-1 space-y-2">
+                    <div class="flex justify-between">
+                      <span>Base Price</span>
+                      <span>$1,150.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Pearl Buttons</span>
+                      <span>$50.00</span>
+                    </div>
+                    <div class="flex justify-between font-medium pt-2 border-t border-gray-200">
+                      <span>Total</span>
+                      <span>$1,200.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Documents -->
+            <div class="bg-white p-6 rounded-lg shadow">
+              <h3 class="text-lg font-medium mb-4">Order Documents</h3>
+              <div class="space-y-2">
+                <a href="#" class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-md">
+                  <div class="flex items-center">
+                    <i class="fas fa-file-contract text-indigo-600 mr-3"></i>
+                    <span>Order Agreement.pdf</span>
+                  </div>
+                  <i class="fas fa-download text-gray-400"></i>
+                </a>
+                <a href="#" class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-md">
+                  <div class="flex items-center">
+                    <i class="fas fa-receipt text-indigo-600 mr-3"></i>
+                    <span>Invoice_12345.pdf</span>
+                  </div>
+                  <i class="fas fa-download text-gray-400"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Cancel Order Modal -->
+  <div id="cancelModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg max-w-md w-full">
+      <h3 class="text-lg font-medium mb-4">Cancel Order</h3>
+      <p class="text-gray-600 mb-4">Are you sure you want to cancel this order? A cancellation fee may apply.</p>
+      
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Reason for cancellation</label>
+        <select class="w-full px-3 py-2 border border-gray-300 rounded-md">
+          <option>Change of plans</option>
+          <option>Found another seller</option>
+          <option>Dissatisfied with progress</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="flex justify-end space-x-3">
+        <button id="cancelCancel" class="px-4 py-2 border border-gray-300 rounded-md">Back</button>
+        <button id="confirmCancel" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Confirm Cancellation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Handle message sending
+    document.getElementById('sendMessage').addEventListener('click', () => {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value.trim();
+      
+      if (message) {
+        const messagesContainer = document.getElementById('messages-container');
+        const now = new Date();
+        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        const newMessage = `
+          <div class="flex">
+            <img src="https://placekitten.com/40/40" alt="You" class="w-8 h-8 rounded-full mr-3 mt-1">
+            <div>
+              <p class="font-medium">You</p>
+              <p class="text-sm text-gray-500">${timeString}</p>
+              <div class="mt-1 p-3 bg-gray-50 rounded-lg">
+                <p>${message}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        messagesContainer.insertAdjacentHTML('afterbegin', newMessage);
+        messageInput.value = '';
+        messagesContainer.scrollTop = 0;
+        
+        // In a real app: Send to server
+        console.log('Message sent:', message);
+      }
+    });
+
+    // Cancel order modal
+    const cancelModal = document.getElementById('cancelModal');
+    document.querySelectorAll('[data-action="cancel-order"]').forEach(btn => {
+      btn.addEventListener('click', () => cancelModal.classList.remove('hidden'));
+    });
+    
+    document.getElementById('cancelCancel').addEventListener('click', () => {
+      cancelModal.classList.add('hidden');
+    });
+    
+    document.getElementById('confirmCancel').addEventListener('click', () => {
+      alert('Order cancellation requested. Seller will respond shortly.');
+      cancelModal.classList.add('hidden');
+    });
+
+    // Auto-scroll messages to bottom
+    document.addEventListener('DOMContentLoaded', () => {
+      const messagesContainer = document.getElementById('messages-container');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    });
+  </script>
+</body>
+</html>

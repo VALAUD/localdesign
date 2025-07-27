@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | FashionConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <!-- Header (reused from partials/header.html) -->
+  <div id="header"></div>
+  <script>
+    fetch('partials/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
+
+  <!-- Login Form -->
+  <section class="container mx-auto px-4 py-12 max-w-md">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-6 text-center">Login</h1>
+      
+      <!-- Social Login Buttons -->
+      <div class="flex justify-center space-x-4 mb-6">
+        <button class="bg-red-500 text-white px-4 py-2 rounded-md flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><!-- Google icon SVG --></svg>
+          Google
+        </button>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><!-- Facebook icon SVG --></svg>
+          Facebook
+        </button>
+      </div>
+
+      <div class="text-center text-gray-500 mb-6">or</div>
+
+      <!-- Email/Password Form -->
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md">
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md">
+        </div>
+        <div class="flex items-center justify-between">
+          <a href="#" class="text-sm text-indigo-600 hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">
+          Login
+        </button>
+      </form>
+
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+          Don’t have an account? 
+          <a href="/sign-up.html" class="text-indigo-600 hover:underline">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (reused) -->
+  <div id="footer"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+
+  <!-- Form Validation (vanilla JS) -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      alert(`Login attempt with:\nEmail: ${email}\nPassword: ${password}`);
+      // Replace with actual API call later
+    });
+  </script>
+</body>
+</html>
