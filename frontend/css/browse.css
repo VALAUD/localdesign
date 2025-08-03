@@ -1,0 +1,33 @@
+/* Filter Section */
+.filter-section {
+  transition: all 0.3s ease;
+}
+
+/* Seller Card */
+.seller-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seller-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Rating Stars */
+.rating-stars {
+  color: #f59e0b;
+}
+
+/* Pagination */
+.pagination-btn {
+  transition: background-color 0.2s ease;
+}
+
+.pagination-btn:hover:not(.active) {
+  background-color: #e5e7eb;
+}
+
+.pagination-btn.active {
+  background-color: #4f46e5;
+  color: white;
+}

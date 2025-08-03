@@ -6,13 +6,7 @@
   <title>My Profile | FashionConnect</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .tab-button { border-bottom: 2px solid transparent; }
-    .tab-button.active { border-bottom-color: #4f46e5; color: #4f46e5; }
-    .color-swatch { width: 20px; height: 20px; display: inline-block; margin-right: 5px; border: 1px solid #ddd; }
-  </style>
+  <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body class="bg-gray-100">
   <!-- Header -->
@@ -46,693 +40,231 @@
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 overflow-auto">
+    <div class="flex-1 overflow-auto p-6">
       <!-- Top Bar -->
-      <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+      <header class="bg-white shadow-sm p-4 flex justify-between items-center mb-6">
         <h2 class="text-xl font-semibold text-gray-800">My Profile</h2>
         <div class="flex items-center space-x-4">
           <span class="text-sm text-gray-600">Last updated: <span id="lastUpdated">Today</span></span>
         </div>
       </header>
 
-      <!-- Profile Content -->
-      <main class="p-6">
-        <!-- Alerts -->
-        <div id="successAlert" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6"></div>
-        <div id="errorAlert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6"></div>
+      <!-- Alerts -->
+      <div id="successAlert" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6"></div>
+      <div id="errorAlert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6"></div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-          <!-- Left Column -->
-          <div class="md:col-span-2 space-y-6">
-            <!-- Basic Info Card -->
-            <div class="bg-white p-6 rounded-lg shadow">
-              <h3 class="text-lg font-medium mb-4">Basic Information</h3>
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
-                  <input type="text" id="firstName" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
-                  <input type="text" id="lastName" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
-                  <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                  <input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
-                  <input type="text" id="city" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                  <input type="text" id="country" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Service Radius (km)</label>
-                  <input type="number" id="serviceRadius" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                </div>
+      <!-- Profile Content -->
+      <div class="space-y-6">
+        <!-- Row 1: Basic Info and Profile Picture -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Basic Info Card -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-medium mb-4">Basic Information</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+                <input type="text" id="firstName" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
               </div>
-              <div class="mt-4 flex justify-end">
-                <button onclick="saveBasicInfo()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                  Save Basic Info
-                </button>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+                <input type="text" id="lastName" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                <input type="text" id="city" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                <input type="text" id="country" class="w-full px-3 py-2 border border-gray-300 rounded-md">
               </div>
             </div>
-
-            <!-- Style Preferences -->
-            <div class="bg-white p-6 rounded-lg shadow">
-              <div class="flex border-b border-gray-200 mb-4">
-                <button class="tab-button active px-4 py-2 font-medium" data-tab="styleTab">My Style</button>
-                <button class="tab-button px-4 py-2 font-medium" data-tab="colorsTab">My Colors</button>
-              </div>
-              
-              <!-- My Style Tab -->
-              <div id="styleTab" class="tab-content active">
-                <!-- Preferred Styles -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Styles</label>
-                  <div class="flex flex-wrap gap-2" id="styleTypeContainer"></div>
-                </div>
-                
-                <!-- Fit Preferences -->
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Fit Preferences</label>
-                  <div class="flex flex-wrap gap-2" id="fitPreferenceContainer"></div>
-                </div>
-                
-                <div class="mt-6 flex justify-end">
-                  <button onclick="saveStylePreferences()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                    Save Style Preferences
-                  </button>
-                </div>
-              </div>
-              
-              <!-- My Colors Tab -->
-              <div id="colorsTab" class="tab-content">
-                <!-- Pattern Preferences -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Pattern Preferences</label>
-                  <div class="flex flex-wrap gap-2" id="patternPreferenceContainer"></div>
-                </div>
-                
-                <!-- Color Preferences -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Color Preferences</label>
-                  <div class="flex flex-wrap gap-2" id="colorPreferenceContainer"></div>
-                </div>
-                
-                <!-- Tone Preferences -->
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Tone Preferences</label>
-                  <div class="flex flex-wrap gap-2" id="tonePreferenceContainer"></div>
-                </div>
-                
-                <div class="mt-6 flex justify-end">
-                  <button onclick="saveColorPreferences()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                    Save Color Preferences
-                  </button>
-                </div>
-              </div>
+            <div class="mt-4 flex justify-end">
+              <button onclick="saveBasicInfo()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                Save Basic Info
+              </button>
             </div>
           </div>
 
-          <!-- Right Column -->
-          <div class="space-y-6">
-            <!-- Profile Picture -->
-            <div class="bg-white p-6 rounded-lg shadow">
-              <h3 class="text-lg font-medium mb-4">Profile Picture</h3>
-              <div class="flex flex-col items-center">
-                <img id="avatarPreview" src="https://placekitten.com/200/200" alt="Profile" class="w-32 h-32 rounded-full mb-4 object-cover">
-                <input type="file" id="avatarUpload" accept="image/*" class="hidden">
-                <button onclick="document.getElementById('avatarUpload').click()" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-md text-sm">
-                  Change Photo
-                </button>
+          <!-- Profile Picture Card -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-medium mb-4">Profile Picture</h3>
+            <div class="flex flex-col items-center">
+              <img id="avatarPreview" src="https://placekitten.com/200/200" alt="Profile" class="w-32 h-32 rounded-full mb-4 object-cover">
+              <input type="file" id="avatarUpload" accept="image/*" class="hidden">
+              <button onclick="document.getElementById('avatarUpload').click()" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-md text-sm">
+                Change Photo
+              </button>
+            </div>
+            <div class="mt-4 flex justify-end">
+              <button onclick="saveProfilePicture()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                Save Profile Picture
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: My Style -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-lg font-medium mb-4">My Style</h3>
+          <div class="flex border-b border-gray-200 mb-4">
+            <button class="tab-button active" data-tab="vibeTab">My Vibe</button>
+            <button class="tab-button" data-tab="colorsTab">My Colors</button>
+          </div>
+          
+          <div class="tab-container">
+            <!-- My Vibe Tab -->
+            <div id="vibeTab" class="tab-content active">
+              <!-- Style Types -->
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Styles</label>
+                <div class="flex flex-wrap gap-2" id="styleTypeContainer"></div>
               </div>
-              <div class="mt-4 flex justify-end">
-                <button onclick="saveProfilePicture()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                  Save Profile Picture
+              
+              <!-- Fit Preferences -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Fit Preferences</label>
+                <div class="flex flex-wrap gap-2" id="fitPreferenceContainer"></div>
+              </div>
+              
+              <div class="mt-6 flex justify-end">
+                <button onclick="saveStylePreferences()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                  Save Style Preferences
                 </button>
               </div>
             </div>
+            
+            <!-- My Colors Tab -->
+            <div id="colorsTab" class="tab-content">
+              <!-- Pattern Preferences -->
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Pattern Preferences</label>
+                <div class="flex flex-wrap gap-2" id="patternPreferenceContainer"></div>
+              </div>
+              
+              <!-- Color Preferences -->
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Color Preferences</label>
+                <div id="colorPreferenceContainer" class="space-y-4">
+                  <!-- Color inputs will be added here dynamically -->
+                </div>
+                <button onclick="addColorField()" class="mt-2 text-sm text-indigo-600 hover:text-indigo-800">
+                  + Add another color
+                </button>
+              </div>
+              
+              <div class="mt-6 flex justify-end">
+                <button onclick="saveColorPreferences()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                  Save Color Preferences
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <!-- My Body Section -->
-            <div class="bg-white p-6 rounded-lg shadow">
-              <div class="flex border-b border-gray-200 mb-4">
-                <button class="tab-button active px-4 py-2 font-medium" data-tab="measurementsTab">Measurements</button>
-                <button class="tab-button px-4 py-2 font-medium" data-tab="skinToneTab">Skin Tone</button>
-                <button class="tab-button px-4 py-2 font-medium" data-tab="insecuritiesTab">Insecurities</button>
-                <button class="tab-button px-4 py-2 font-medium" data-tab="assetsTab">Assets</button>
-              </div>
-              
-              <!-- Measurements Tab -->
-              <div id="measurementsTab" class="tab-content active">
-                <h3 class="text-lg font-medium mb-4">Body Measurements (cm)</h3>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Height</label>
-                    <input type="number" id="height" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Bust</label>
-                    <input type="number" id="bust" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Waist</label>
-                    <input type="number" id="waist" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Hips</label>
-                    <input type="number" id="hips" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                  </div>
+        <!-- Row 3: My Body -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-lg font-medium mb-4">My Body</h3>
+          <div class="flex border-b border-gray-200 mb-4">
+            <button class="tab-button active" data-tab="measurementsTab">Measurements</button>
+            <button class="tab-button" data-tab="skinToneTab">Skin Tone</button>
+            <button class="tab-button" data-tab="selfPerceptionTab">Self Perception</button>
+          </div>
+          
+          <div class="tab-container">
+            <!-- Measurements Tab -->
+            <div id="measurementsTab" class="tab-content active">
+              <h4 class="text-md font-medium mb-4">Body Measurements (cm)</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Height</label>
+                  <input type="number" id="height" class="w-full px-3 py-2 border border-gray-300 rounded-md">
                 </div>
-                <div class="mt-4 flex justify-end">
-                  <button onclick="saveMeasurements()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                    Save Measurements
-                  </button>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Bust</label>
+                  <input type="number" id="bust" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Waist</label>
+                  <input type="number" id="waist" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Hips</label>
+                  <input type="number" id="hips" class="w-full px-3 py-2 border border-gray-300 rounded-md">
                 </div>
               </div>
-              
-              <!-- Skin Tone Tab -->
-              <div id="skinToneTab" class="tab-content">
-                <h3 class="text-lg font-medium mb-4">Skin Tone</h3>
-                <div class="space-y-4">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Skin Tone</label>
-                    <select id="skinTone" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                      <option value="">Select skin tone</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Undertone</label>
-                    <select id="undertone" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                      <option value="">Select undertone</option>
-                    </select>
-                  </div>
+              <div class="mt-4 flex justify-end">
+                <button onclick="saveMeasurements()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                  Save Measurements
+                </button>
+              </div>
+            </div>
+            
+            <!-- Skin Tone Tab -->
+            <div id="skinToneTab" class="tab-content">
+              <h4 class="text-md font-medium mb-4">Skin Tone</h4>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Skin Tone</label>
+                  <select id="skinTone" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                    <option value="">Select skin tone</option>
+                  </select>
                 </div>
-                <div class="mt-4 flex justify-end">
-                  <button onclick="saveSkinTone()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                    Save Skin Tone
-                  </button>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Undertone</label>
+                  <select id="undertone" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                    <option value="">Select undertone</option>
+                  </select>
                 </div>
               </div>
-              
-              <!-- Insecurities Tab -->
-              <div id="insecuritiesTab" class="tab-content">
-                <h3 class="text-lg font-medium mb-4">Body Insecurities</h3>
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Select Insecurities</label>
+              <div class="mt-4 flex justify-end">
+                <button onclick="saveSkinTone()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                  Save Skin Tone
+                </button>
+              </div>
+            </div>
+            
+            <!-- Self Perception Tab -->
+            <div id="selfPerceptionTab" class="tab-content">
+              <div class="space-y-6">
+                <!-- Insecurities Section -->
+                <div>
+                  <h4 class="text-md font-medium mb-2">My Insecurities</h4>
+                  <p class="text-sm text-gray-500 mb-4">Select the ones you would like to hide when you put together an outfit</p>
                   <div class="flex flex-wrap gap-2" id="insecuritiesContainer"></div>
                 </div>
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Specific Details</label>
-                  <textarea id="insecurityDetails" class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="2"></textarea>
-                </div>
+                
+                <!-- Assets Section -->
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Design Solutions</label>
-                  <textarea id="insecuritySolutions" class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="2"></textarea>
-                </div>
-                <div class="mt-4 flex justify-end">
-                  <button onclick="saveInsecurities()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                    Save Insecurities
-                  </button>
-                </div>
-              </div>
-              
-              <!-- Assets Tab -->
-              <div id="assetsTab" class="tab-content">
-                <h3 class="text-lg font-medium mb-4">Body Assets</h3>
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Select Assets</label>
+                  <h4 class="text-md font-medium mb-2">My Assets</h4>
+                  <p class="text-sm text-gray-500 mb-4">Select the ones you would like to highlight when you put together an outfit</p>
                   <div class="flex flex-wrap gap-2" id="assetsContainer"></div>
                 </div>
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Specific Details</label>
-                  <textarea id="assetDetails" class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="2"></textarea>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Design Solutions</label>
-                  <textarea id="assetSolutions" class="w-full px-3 py-2 border border-gray-300 rounded-md" rows="2"></textarea>
-                </div>
+                
                 <div class="mt-4 flex justify-end">
-                  <button onclick="saveAssets()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
-                    Save Assets
+                  <button onclick="saveSelfPerception()" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm">
+                    Save Preferences
                   </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
   <div id="footer"></div>
-
+  
   <!-- Scripts -->
-  <script>
-    // Global variables to store ENUM values and selections
-    let styleTypes = [];
-    let fitValues = [];
-    let patterns = [];
-    let colors = [];
-    let tones = [];
-    let insecurities = [];
-    let assetsList = [];
-    let skinTones = [];
-    let undertones = [];
-    
-    // Current selections
-    let selectedInsecurities = [];
-    let selectedAssets = [];
-
-    // Load header and footer
-    fetch('/partials/header.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('header').innerHTML = data);
-      
-    fetch('/partials/footer.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
-
-    // Initialize tabs
-    function initTabs() {
-      const tabButtons = document.querySelectorAll('[data-tab]');
-      tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Get the tab group (parent element with class 'flex border-b')
-          const tabGroup = this.closest('.flex.border-b');
-          const tabContents = tabGroup.nextElementSibling.querySelectorAll('.tab-content');
-          
-          // Deactivate all tabs in this group
-          tabGroup.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-          tabContents.forEach(content => content.classList.remove('active'));
-          
-          // Activate clicked tab
-          this.classList.add('active');
-          document.getElementById(this.dataset.tab).classList.add('active');
-        });
-      });
-    }
-
-    // Fetch ENUM values and lists from server
-    function fetchDatabaseData() {
-      Promise.all([
-        fetch('/api/client/enums').then(res => res.json()),
-        fetch('/api/client/insecurities-list').then(res => res.json()),
-        fetch('/api/client/assets-list').then(res => res.json())
-      ])
-      .then(([enums, insecuritiesData, assetsData]) => {
-        // Store ENUM values
-        styleTypes = enums.styleTypes || [];
-        fitValues = enums.fitValues || [];
-        patterns = enums.patterns || [];
-        colors = enums.colors || [];
-        tones = enums.tones || [];
-        skinTones = enums.skinTones || [];
-        undertones = enums.undertones || [];
-        
-        // Store insecurities and assets from database tables
-        insecurities = insecuritiesData || [];
-        assetsList = assetsData || [];
-        
-        // Initialize form with all data
-        initializeForm();
-        loadProfile();
-      })
-      .catch(error => {
-        console.error('Error fetching database data:', error);
-        // Fallback to default values if API fails
-        setDefaultData();
-        initializeForm();
-        loadProfile();
-      });
-    }
-
-    // Fallback default data
-    function setDefaultData() {
-      // ENUM values
-      styleTypes = ['bohemian', 'minimalist', 'old_money', 'gothic', 'streetwear', 'preppy', 'casual', 'avant_garde'];
-      fitValues = ['loose', 'fitted', 'baggy'];
-      patterns = ['plaid', 'lines', 'dots', 'floral', 'tribal', 'geometric'];
-      colors = ['red', 'blue', 'green', 'yellow', 'purple', 'black', 'white', 'pink', 'orange', 'grey', 'brown'];
-      tones = ['muted', 'bright', 'pastel'];
-      skinTones = ['fair', 'light', 'medium', 'olive', 'brown', 'dark'];
-      undertones = ['cool', 'warm', 'neutral'];
-      
-      // Insecurities and assets from your database inserts
-      insecurities = [
-        { insecurity_type: 'flabby_arms', body_part: 'arms', note: 'Concern about sagging or jiggling upper arms' },
-        { insecurity_type: 'small_bust', body_part: 'bust', note: 'Desire for more volume or shape' },
-        // Add more insecurities as needed
-      ];
-      
-      assetsList = [
-        { asset_type: 'long_neck', body_part: 'neck', note: 'Elegant and slender neck, perfect for off-shoulder or V-neck designs' },
-        { asset_type: 'toned_arms', body_part: 'arms', note: 'Firm and sculpted arms ideal for sleeveless or fitted sleeves' },
-        // Add more assets as needed
-      ];
-    }
-
-    // Initialize form with all data
-    function initializeForm() {
-      // Style Types
-      const styleTypeContainer = document.getElementById('styleTypeContainer');
-      styleTypeContainer.innerHTML = '';
-      styleTypes.forEach(type => {
-        const formattedType = type.replace('_', ' ');
-        styleTypeContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="checkbox" name="styleType" value="${type}" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${formattedType}</span>
-          </label>
-        `;
-      });
-
-      // Fit Preferences
-      const fitContainer = document.getElementById('fitPreferenceContainer');
-      fitContainer.innerHTML = '';
-      fitValues.forEach(fit => {
-        fitContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="radio" name="fitPreference" value="${fit}" class="h-4 w-4 text-indigo-600 border-gray-300">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${fit}</span>
-          </label>
-        `;
-      });
-
-      // Pattern Preferences
-      const patternContainer = document.getElementById('patternPreferenceContainer');
-      patternContainer.innerHTML = '';
-      patterns.forEach(pattern => {
-        patternContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="checkbox" name="patternPreference" value="${pattern}" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${pattern}</span>
-          </label>
-        `;
-      });
-
-      // Color Preferences
-      const colorContainer = document.getElementById('colorPreferenceContainer');
-      colorContainer.innerHTML = '';
-      colors.forEach(color => {
-        colorContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="checkbox" name="colorPreference" value="${color}" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${color}</span>
-          </label>
-        `;
-      });
-
-      // Tone Preferences
-      const toneContainer = document.getElementById('tonePreferenceContainer');
-      toneContainer.innerHTML = '';
-      tones.forEach(tone => {
-        toneContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="checkbox" name="tonePreference" value="${tone}" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${tone}</span>
-          </label>
-        `;
-      });
-
-      // Insecurities
-      const insecuritiesContainer = document.getElementById('insecuritiesContainer');
-      insecuritiesContainer.innerHTML = '';
-      insecurities.forEach(item => {
-        insecuritiesContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="checkbox" name="insecurity" value="${item.insecurity_type}" 
-                   data-body-part="${item.body_part}" data-note="${item.note}"
-                   class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${item.insecurity_type.replace(/_/g, ' ')}</span>
-          </label>
-        `;
-      });
-
-      // Assets
-      const assetsContainer = document.getElementById('assetsContainer');
-      assetsContainer.innerHTML = '';
-      assetsList.forEach(item => {
-        assetsContainer.innerHTML += `
-          <label class="flex items-center">
-            <input type="checkbox" name="asset" value="${item.asset_type}" 
-                   data-body-part="${item.body_part}" data-note="${item.note}"
-                   class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
-            <span class="ml-2 text-sm text-gray-700 capitalize">${item.asset_type.replace(/_/g, ' ')}</span>
-          </label>
-        `;
-      });
-
-      // Skin Tone Dropdown
-      const skinToneSelect = document.getElementById('skinTone');
-      skinToneSelect.innerHTML = '<option value="">Select skin tone</option>';
-      skinTones.forEach(tone => {
-        skinToneSelect.innerHTML += `<option value="${tone}">${tone.charAt(0).toUpperCase() + tone.slice(1)}</option>`;
-      });
-
-      // Undertone Dropdown
-      const undertoneSelect = document.getElementById('undertone');
-      undertoneSelect.innerHTML = '<option value="">Select undertone</option>';
-      undertones.forEach(tone => {
-        undertoneSelect.innerHTML += `<option value="${tone}">${tone.charAt(0).toUpperCase() + tone.slice(1)}</option>`;
-      });
-    }
-
-    // Image upload preview
-    document.getElementById('avatarUpload').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          document.getElementById('avatarPreview').src = event.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Load profile data
-    function loadProfile() {
-      fetch('/api/client/profile')
-        .then(response => response.json())
-        .then(data => {
-          // Basic info
-          document.getElementById('firstName').value = data.client_name || '';
-          document.getElementById('lastName').value = data.client_surname || '';
-          document.getElementById('email').value = data.client_email || '';
-          document.getElementById('phone').value = data.client_phone || '';
-          document.getElementById('city').value = data.client_city || '';
-          document.getElementById('country').value = data.client_country || '';
-          document.getElementById('serviceRadius').value = data.client_service_radius || '';
-          
-          // Update sidebar name
-          document.getElementById('sidebarUserName').textContent = 
-            `${data.client_name || ''} ${data.client_surname || ''}`.trim();
-          
-          // Measurements
-          document.getElementById('height').value = data.client_height || '';
-          document.getElementById('bust').value = data.client_bust || '';
-          document.getElementById('waist').value = data.client_waist || '';
-          document.getElementById('hips').value = data.client_hips || '';
-          
-          // Style preferences
-          if (data.style_profile) {
-            document.getElementById('skinTone').value = data.style_profile.skin_tone || '';
-            document.getElementById('undertone').value = data.style_profile.skin_undertones || '';
-            
-            // Check checkboxes based on preferences
-            if (data.style_type_preferences) {
-              data.style_type_preferences.forEach(pref => {
-                const checkbox = document.querySelector(`input[name="styleType"][value="${pref.style_type}"]`);
-                if (checkbox) checkbox.checked = true;
-              });
-            }
-            
-            if (data.style_fit_preferences) {
-              data.style_fit_preferences.forEach(pref => {
-                const radio = document.querySelector(`input[name="fitPreference"][value="${pref.fit_value}"]`);
-                if (radio) radio.checked = true;
-              });
-            }
-            
-            // Similar for other preferences (pattern, color, tone)
-          }
-          
-          // Insecurities
-          if (data.client_insecurities) {
-            data.client_insecurities.forEach(insec => {
-              const checkbox = document.querySelector(`input[name="insecurity"][value="${insec.insecurity_type}"]`);
-              if (checkbox) checkbox.checked = true;
-            });
-            if (data.client_insecurities.length > 0) {
-              document.getElementById('insecurityDetails').value = data.client_insecurities[0].specific_details || '';
-              document.getElementById('insecuritySolutions').value = data.client_insecurities[0].prefered_design_solution || '';
-            }
-          }
-          
-          // Assets
-          if (data.client_assets) {
-            data.client_assets.forEach(asset => {
-              const checkbox = document.querySelector(`input[name="asset"][value="${asset.asset_type}"]`);
-              if (checkbox) checkbox.checked = true;
-            });
-            if (data.client_assets.length > 0) {
-              document.getElementById('assetDetails').value = data.client_assets[0].specific_details || '';
-              document.getElementById('assetSolutions').value = data.client_assets[0].prefered_design_solution || '';
-            }
-          }
-          
-          // Profile picture
-          if (data.profile_picture) {
-            document.getElementById('avatarPreview').src = data.profile_picture;
-          }
-          
-          // Last updated
-          if (data.updated_at) {
-            document.getElementById('lastUpdated').textContent = new Date(data.updated_at).toLocaleDateString();
-          }
-        })
-        .catch(error => {
-          console.error('Error loading profile:', error);
-        });
-    }
-
-    // Save functions for each section
-    function saveBasicInfo() {
-      const data = {
-        firstName: document.getElementById('firstName').value,
-        lastName: document.getElementById('lastName').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        city: document.getElementById('city').value,
-        country: document.getElementById('country').value,
-        serviceRadius: document.getElementById('serviceRadius').value
-      };
-      
-      if (!data.firstName || !data.lastName || !data.email) {
-        showAlert('error', 'Please fill in all required fields');
-        return;
-      }
-      
-      saveData('/api/client/basic-info', data, 'Basic info updated successfully!');
-    }
-
-    function saveStylePreferences() {
-      const data = {
-        styleTypes: Array.from(document.querySelectorAll('input[name="styleType"]:checked')).map(el => el.value),
-        fitPreference: document.querySelector('input[name="fitPreference"]:checked')?.value
-      };
-      
-      saveData('/api/client/style-preferences', data, 'Style preferences updated successfully!');
-    }
-
-    function saveColorPreferences() {
-      const data = {
-        patterns: Array.from(document.querySelectorAll('input[name="patternPreference"]:checked')).map(el => el.value),
-        colors: Array.from(document.querySelectorAll('input[name="colorPreference"]:checked')).map(el => el.value),
-        tones: Array.from(document.querySelectorAll('input[name="tonePreference"]:checked')).map(el => el.value)
-      };
-      
-      saveData('/api/client/color-preferences', data, 'Color preferences updated successfully!');
-    }
-
-    function saveMeasurements() {
-      const data = {
-        height: document.getElementById('height').value,
-        bust: document.getElementById('bust').value,
-        waist: document.getElementById('waist').value,
-        hips: document.getElementById('hips').value
-      };
-      
-      saveData('/api/client/measurements', data, 'Measurements updated successfully!');
-    }
-
-    function saveSkinTone() {
-      const data = {
-        skinTone: document.getElementById('skinTone').value,
-        undertone: document.getElementById('undertone').value
-      };
-      
-      saveData('/api/client/skin-tone', data, 'Skin tone updated successfully!');
-    }
-
-    function saveInsecurities() {
-      const selected = Array.from(document.querySelectorAll('input[name="insecurity"]:checked'));
-      const data = {
-        insecurities: selected.map(el => ({
-          insecurity_type: el.value,
-          body_part: el.dataset.bodyPart,
-          specific_details: document.getElementById('insecurityDetails').value,
-          prefered_design_solution: document.getElementById('insecuritySolutions').value
-        }))
-      };
-      
-      saveData('/api/client/insecurities', data, 'Insecurities updated successfully!');
-    }
-
-    function saveAssets() {
-      const selected = Array.from(document.querySelectorAll('input[name="asset"]:checked'));
-      const data = {
-        assets: selected.map(el => ({
-          asset_type: el.value,
-          body_part: el.dataset.bodyPart,
-          specific_details: document.getElementById('assetDetails').value,
-          prefered_design_solution: document.getElementById('assetSolutions').value
-        }))
-      };
-      
-      saveData('/api/client/assets', data, 'Assets updated successfully!');
-    }
-
-    function saveProfilePicture() {
-      const data = {
-        profilePicture: document.getElementById('avatarPreview').src
-      };
-      
-      saveData('/api/client/profile-picture', data, 'Profile picture updated successfully!');
-    }
-
-    // Generic save function
-    function saveData(url, data, successMessage) {
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      })
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
-      .then(() => {
-        showAlert('success', successMessage);
-        document.getElementById('lastUpdated').textContent = 'Just now';
-      })
-      .catch(error => {
-        console.error('Error saving data:', error);
-        showAlert('error', 'Error updating data. Please try again.');
-      });
-    }
-
-    function showAlert(type, message) {
-      const alert = document.getElementById(`${type}Alert`);
-      alert.textContent = message;
-      alert.classList.remove('hidden');
-      setTimeout(() => alert.classList.add('hidden'), 3000);
-    }
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', function() {
-      initTabs();
-      fetchDatabaseData();
-    });
-  </script>
+  <script src="/js/profile.js"></script>
 </body>
 </html>
